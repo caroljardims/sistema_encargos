@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
+
+<head>
+	<link rel="stylesheet" href="{% static "css/style.css" %}" /> <!-- CSS -->    
+        <title>Encargo</title>
+</head>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.19">
+  <style type="text/css">
+  </style>
+</head>
+<body>
+    <a href="/index/" class="volta" >Voltar</a>
+    <h1>Encargo</h1>
+    <form action="" method="post">
+     {% csrf_token %}
+	 {{form.management_form}}
+     <label>Professor: </label><select name="professor">
+          {% for Professor in prof_list %}
+		  <option value="{{ Professor.id }}"> {{ Professor.nome }} </option>
+		  {% endfor %}
+       </select>
+    <br />
+    <label>Ano/Sem: </label><input type = "text" name="ano" size="4" />
+    / <select name="sem">
+          <option value="1">1</option>
+          <option value="2">2</option>
+       </select>
+     <br />
+     <label>Horas:</label><input type="text" name="horas" size="4" />
+     <br />
+     <label>Encargos:</label><input type="text" name="encargos" size="4" />
+     <br />
+     <input type="submit" value="Enviar"><br />
+     </form>
+</body>
+</html>

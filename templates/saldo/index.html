@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
+
+<head>
+	<link rel="stylesheet" href="{% static "css/style.css" %}" /> <!-- CSS -->    
+        <title>Loja</title>
+</head>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Loja</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.19">
+  <style type="text/css">
+  </style>
+</head>
+<body>
+<h1>Encargos</h1>
+<div id="content">
+<h2> Consultar Saldo: </h2>
+
+    {% for a in ano %}{% for s in sem %}
+    	<a href="/versaldo/{{ a }}{{ s }}" > {{ a }}/{{ s }} <br />
+    {% endfor %}{% endfor %}
+	
+<br /><br />
+<a href="/addprof/" class="botao">Adicionar Professor</a>
+<a href="/addencargo/" class="botao">Adicionar Encargo</a>
+</div>
+</body>
+</html>

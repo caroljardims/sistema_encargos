@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
+
+<head>
+	<link rel="stylesheet" href="{% static "css/style.css" %}" /> <!-- CSS -->    
+        <title>Loja</title>
+</head>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Loja</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.19">
+  <style type="text/css">
+  </style>
+</head>
+<body>
+<h1>Encargos</h1>
+<table border="1px">
+
+<form action="" method="post">
+     {% csrf_token %}
+	 {{form.management_form}}
+     <label>Ano: </label><select name="professor">
+          {% for i in lista %}
+		  <option value="{{ i }}"> {{ i }} </option>
+		  {% endfor %}
+       </select>
+     <input type="submit" value="Enviar"><br />
+     </form>
+
+	<th>Professor</th>
+    <th>Ano/Semestre</th>
+    <th>Horas</th>
+    <th>Encargos</th>
+    <th>Pontos</th>
+    <th>A Somar</th>
+    <th>Saldo</th>
+	    {% if encargo_list %}
+		  {% for Encargo in encargo_list %}
+		  <tr>
+          <td>{{ Encargo.professor.nome }}</td>
+          <td> {{ Encargo.ano }}/{{ Encargo.sem }} </td>
+          <td> {{ Encargo.horas }} </td>
+          <td> {{ Encargo.encargos }} </td>
+          <td> {{ Encargo.pontos }} </td>
+          <td> {{ Encargo.somar }} </td>
+          <td> </td>
+          </tr>
+	      {% endfor %}
+	    {% else %}
+	    <b>Nenhum Professor Encontrado</b><br />
+	    {% endif %}
+</table>
+<br /><br />
+<a href="/saldo/" class="botao">Início</a>
+<a href="/addprof/" class="botao">Adicionar Professor</a>
+<a href="/addencargo/" class="botao">Adicionar Encargo</a>
+
+</body>
+</html>
